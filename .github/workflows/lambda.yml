@@ -63,7 +63,11 @@ jobs:
         uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: 1.6.0
-
+          
+      - name: 📦 Create Lambda ZIP Archive
+        run: |
+          zip lambda_function_payload.zip lambda.js
+          
       - name: Terraform Init
         run: terraform init
 
@@ -150,6 +154,10 @@ jobs:
         with:
           terraform_version: 1.6.0
 
+      - name: 📦 Create Lambda ZIP Archive
+        run: |
+          zip lambda_function_payload.zip lambda.js
+          
       - name: Terraform Init
         run: terraform init
 
